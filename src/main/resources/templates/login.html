@@ -55,6 +55,7 @@
                     <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
                 </div>
             </div>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         </form>
     </div>
 </div>
