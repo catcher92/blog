@@ -1,4 +1,4 @@
-package com.catcher92.bolg.config;
+package com.catcher92.blog.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
