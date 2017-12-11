@@ -34,7 +34,7 @@
     <div class="login-box-body">
         <p class="login-box-msg"></p>
 
-        <form action="" method="post">
+        <form th:action="${#httpServletRequest.getRequestURI()}" method="post">
             <div class="form-group has-feedback">
                 <input type="text" name="username" class="form-control" placeholder="请输入帐号" />
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -55,7 +55,6 @@
                     <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
                 </div>
             </div>
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         </form>
     </div>
 </div>
