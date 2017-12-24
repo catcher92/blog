@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="generator/generator.properties"/>
+
+    <classPathEntry location="${database.classPath}"/>
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="com.catcher92.framework.generator.JavaMapperPlugin" />
+        <commentGenerator type="com.catcher92.framework.generator.CommentGenerator">
+            <property name="addRemarkComments" value="true" />
+            <property name="dateFormat" value="yyyy-MM-dd" />
+        </commentGenerator>
+        <jdbcConnection driverClass="${database.driverClass}"
+                        connectionURL="${database.url}"
+                        userId="${database.username}"
+                        password="${database.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.catcher92.blog.po" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.catcher92.framework.entity.BasePo"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+            <property name="isMergeable" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="com.catcher92.framework.generator.JavaMapperGenerator" targetPackage="com.catcher92.blog.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="sys_user" domainObjectName="SysUserPo" />
+
+    </context>
+</generatorConfiguration>
