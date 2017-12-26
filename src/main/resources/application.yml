@@ -1,3 +1,13 @@
 spring:
   thymeleaf:
     mode: LEGACYHTML5
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/blog
+    username: blog
+    password: blog
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations:
+    - classpath*:mapper/*.xml
+    - classpath*:mapper/ext/*.xml
+  type-aliases-package: com.catcher92.blog.po
