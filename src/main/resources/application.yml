@@ -11,3 +11,6 @@ mybatis:
     - classpath*:mapper/*.xml
     - classpath*:mapper/ext/*.xml
   type-aliases-package: com.catcher92.blog.po
+pagehelper:
+  reasonable: false
+#  support-methods-arguments: true
