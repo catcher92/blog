@@ -37,7 +37,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="sys_user" domainObjectName="SysUserPo" />
+        <table tableName="sys_user" domainObjectName="SysUserPo">
+            <generatedKey column="ID" sqlStatement="JDBC" />
+        </table>
 
     </context>
 </generatorConfiguration>
