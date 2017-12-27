@@ -9,11 +9,11 @@ import com.github.pagehelper.util.StringUtil;
 
 import java.util.List;
 
-public class DefaultDaoServiceImpl<K extends BasePo, V extends BaseExample> {
+public class DefaultDaoServiceImpl<K extends BasePo, V extends BaseExample, M extends BaseMapper<K, V>> {
 
-    private BaseMapper<K, V> mapper;
+    private final M mapper;
 
-    public void setMapper(BaseMapper<K, V> mapper) {
+    public DefaultDaoServiceImpl(M mapper) {
         this.mapper = mapper;
     }
 
