@@ -1,5 +1,6 @@
 package com.catcher92.blog.service.impl;
 
+import com.catcher92.blog.constant.UserConstant;
 import com.catcher92.blog.dao.SysUserDaoService;
 import com.catcher92.blog.po.SysUserPo;
 import com.catcher92.blog.service.SysUserService;
@@ -19,7 +20,9 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public SysUserVo save(SysUserVo sysUserVo) {
-        sysUserVo.setDeleteStatus(false);
+        sysUserVo.setDeleteStatus(UserConstant.USER_DELETE_STATUS_NO);
+        // 默认未激活
+        sysUserVo.setStatus(UserConstant.USER_STATUS_HIDE);
         sysUserVo.setPassword(MD5Util.encode(sysUserVo.getPassword()));
         sysUserVo.setCreateBy(SecurityUtil.getCurrentUserName());
         sysUserVo.setCreateDate(new Date());

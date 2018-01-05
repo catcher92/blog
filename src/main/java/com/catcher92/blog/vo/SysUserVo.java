@@ -23,6 +23,12 @@ public class SysUserVo {
     private String nickName;
 
     /**
+     * 邮箱
+     */
+    @NotBlank(message = "email不能为空")
+    private String email;
+
+    /**
      * 密码
      */
     @NotBlank(message = "password不能为空")
@@ -30,9 +36,14 @@ public class SysUserVo {
     private String password;
 
     /**
+     * 状态(0激活,1未激活)
+     */
+    private Integer status;
+
+    /**
      * 删除状态
      */
-    private Boolean deleteStatus;
+    private Integer deleteStatus;
 
     /**
      * 创建人
@@ -78,6 +89,14 @@ public class SysUserVo {
         this.nickName = nickName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -86,11 +105,19 @@ public class SysUserVo {
         this.password = password;
     }
 
-    public Boolean getDeleteStatus() {
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getDeleteStatus() {
         return deleteStatus;
     }
 
-    public void setDeleteStatus(Boolean deleteStatus) {
+    public void setDeleteStatus(Integer deleteStatus) {
         this.deleteStatus = deleteStatus;
     }
 
@@ -132,7 +159,9 @@ public class SysUserVo {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", nickName='" + nickName + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", status=" + status +
                 ", deleteStatus=" + deleteStatus +
                 ", createBy='" + createBy + '\'' +
                 ", createDate=" + createDate +
