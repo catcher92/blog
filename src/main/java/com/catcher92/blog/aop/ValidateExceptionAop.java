@@ -5,10 +5,9 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.util.StringUtils;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.Iterator;
 
 @Aspect
 @Component
@@ -19,14 +18,6 @@ public class ValidateExceptionAop {
 
     @AfterThrowing(pointcut = "violationException()", throwing = "e")
     public void handleException(ConstraintViolationException e) {
-        Iterator<ConstraintViolation<?>> iterator = e.getConstraintViolations().iterator();
-        ConstraintViolation<?> violation;
-        StringBuilder builder = new StringBuilder();
-        while (iterator.hasNext()) {
-            violation = iterator.next();
-            builder.append(violation.getMessage());
-            builder.append(" ");
-        }
-        throw new ParamException(builder.toString());
+        throw new ParamException(StringUtils.join(e.getConstraintViolations(), ","));
     }
 }
